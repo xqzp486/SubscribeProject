@@ -63,13 +63,13 @@ token字段无需自己填充，项目启动时，会自行根据uuid，生成�
 数据库地址必须填mysql所在的ip，或者指定自定义docker的网络
 
 ~~~ docker
-docker build -t proxy:1.0.1 .
+docker build -t proxy:1.3 .
 
 docker run -d -p 8080:8080 \
 -v /etc/springboot/config:/config \
 -v /var/log/myproxy:/var/log/myproxy \
 -e TZ="Asia/Shanghai" \
---name proxy proxy:1.0.1
+--name proxy proxy:1.3
 ~~~
 
 ### 3、SubscribeProject
