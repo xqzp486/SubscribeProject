@@ -10,7 +10,9 @@
 
 项目使用jjwt来签发token,使用时请务必自行更改token的密钥,在配置文件中
 
-本项目目前只支持vmess+ws、vmess+ws+tls、vmess+tcp+tls、vless+tcp+tls+vless+xtls-rprx-origin
+本项目目前只支持<br/>
+vmess+ws、vmess+ws+tls、vmess+tcp+tls<br/>
+vless+xtls-rprx-vision、vless+xtls-rprx-vision-reality<br/>
 
 生成Clash订阅时会自动过滤掉vless结点，因为一般的Clash内核不支持vless
 
