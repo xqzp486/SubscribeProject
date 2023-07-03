@@ -39,7 +39,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.22</version>
+            <version>8.0.33</version>
         </dependency>
 
 
@@ -113,8 +113,8 @@
                 <filtering>true</filtering>
                 <includes>
                     <!-- 项目打包完成的包中只包含当前环境文件 -->
-<!--                    <include>application.properties</include>-->
-<!--                    <include>application-${profileActive}.yaml</include>-->
+                    <include>application.properties</include>
+                    <include>application-${profileActive}.yaml</include>
                     <include>raw.yaml</include>
                     <include>logback.xml</include>
                 </includes>
