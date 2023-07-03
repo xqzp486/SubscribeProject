@@ -16,13 +16,35 @@ public class JwtUtils {
     public static final long EXPIRE = 1000*60*60*24*180L;
     public static final String APP_SECRET = KeyConfig.APP_SECRET;
 
+
+    /**
+     * create a token including time limit
+     * @param uuid
+     * @return
+     */
+    //public static String getJwtToken(String uuid){
+    //    String JwtToken = Jwts.builder()
+    //            .setHeaderParam("typ", "JWT")
+    //            .setHeaderParam("alg", "HS256")
+    //            .setSubject("jwt-user")
+    //            .setIssuedAt(new Date())
+    //            .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
+    //            .claim("uuid", uuid)
+    //            .signWith(SignatureAlgorithm.HS256, APP_SECRET)
+    //            .compact();
+    //    return JwtToken;
+    //}
+
+    /**
+     * create a token without time limit
+     * @param uuid
+     * @return
+     */
     public static String getJwtToken(String uuid){
         String JwtToken = Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
                 .setSubject("jwt-user")
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
                 .claim("uuid", uuid)
                 .signWith(SignatureAlgorithm.HS256, APP_SECRET)
                 .compact();
