@@ -13,7 +13,7 @@ spring:
     password: root
 
 jjwt:
-  secret: ukc8BDbjZWLPHO
+  secret: ukc8BDbRigUDaY6pZFfWus2jZWLPHO
 
 wikihost:
   x_api_key:

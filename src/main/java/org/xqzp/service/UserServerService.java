@@ -1,6 +1,7 @@
 package org.xqzp.service;
 
 
+import org.xqzp.entity.User;
 import org.xqzp.entity.UserServer;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -15,5 +16,5 @@ import java.util.Map;
  * @since 2022-08-11
  */
 public interface UserServerService extends IService<UserServer> {
-    Map getProxyInfoMap(String uuid,String type);
+    Map getProxyInfoMap(User user, String type);
 }

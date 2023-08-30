@@ -32,12 +32,7 @@ public class UserServerServiceImpl extends ServiceImpl<UserServerMapper, UserSer
     @Autowired
     UserService userService;
 
-    public Map getProxyInfoMap(String uuid,String type){
-        //查询用户信息
-        QueryWrapper<User> userwrapper = new QueryWrapper<>();
-        userwrapper.eq("uuid",uuid);
-        User user = userService.getOne(userwrapper);
-
+    public Map getProxyInfoMap(User user,String type){
         //======================================================
         //根据用户信息查询用户拥有的节点信息
         //1.先获取user和server的对应关系

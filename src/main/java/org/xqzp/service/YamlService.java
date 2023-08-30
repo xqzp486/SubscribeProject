@@ -1,8 +1,10 @@
 package org.xqzp.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import org.xqzp.entity.User;
 import org.xqzp.entity.yamlvo.Group;
 import org.xqzp.entity.yamlvo.Proxy;
 import org.xqzp.utils.GroupConvert;
@@ -19,8 +21,16 @@ public class YamlService {
     @Autowired
     UserServerService userServerService;
 
+    @Autowired
+    UserService userService;
+
     public StringBuffer createYaml(String uuid)  {
-        Map map = userServerService.getProxyInfoMap(uuid,"clash");
+        //查询用户信息
+        QueryWrapper<User> userwrapper = new QueryWrapper<>();
+        userwrapper.eq("uuid",uuid);
+        User user = userService.getOne(userwrapper);
+
+        Map map = userServerService.getProxyInfoMap(user,"clash");
 
         //封装proxies数组
         ArrayList<LinkedHashMap<String, Object>> proxyMapArray =
