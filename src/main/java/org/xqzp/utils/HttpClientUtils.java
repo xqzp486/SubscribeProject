@@ -221,8 +221,8 @@ public class HttpClientUtils {
 		HttpClient client = null;
 		HttpGet get = new HttpGet(url);
 
-		get.setHeader("x-api-key",KeyConfig.X_API_KEY);
-		get.setHeader("x-api-password",KeyConfig.X_API_PASSWORD);
+		//get.setHeader("x-api-key",KeyConfig.X_API_KEY);
+		//get.setHeader("x-api-password",KeyConfig.X_API_PASSWORD);
 
 		String result = "";
 		try {

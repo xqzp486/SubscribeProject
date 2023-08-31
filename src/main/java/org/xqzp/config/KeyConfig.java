@@ -21,7 +21,7 @@ public class KeyConfig implements InitializingBean {
     public static String X_API_PASSWORD;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         APP_SECRET = app_secret;
         X_API_KEY = x_api_key;
         X_API_PASSWORD = x_api_password;
