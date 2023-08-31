@@ -62,7 +62,7 @@ public class UserLinkServiceImpl extends ServiceImpl<UserLinkMapper, UserLink> i
                         stringWriter.write(new String(Base64.getDecoder().decode(base64)));
                     }
                     //如果直接是v2ray分享格式的订阅,则直接写入
-                    stringWriter.write(subscriptionLink.getLink());
+                    stringWriter.write(subscriptionLink.getLink()+"\n");
                 });
         return stringWriter.toString();
     }
