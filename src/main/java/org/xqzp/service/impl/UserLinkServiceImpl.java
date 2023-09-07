@@ -49,7 +49,11 @@ public class UserLinkServiceImpl extends ServiceImpl<UserLinkMapper, UserLink> i
                 .map((UserLink::getLid))
                 .collect(Collectors.toList());
 
-         //2.获取到对应的订阅链接
+        //2.获取到对应的订阅链接
+        //如果没有持有任何订阅就返回空串
+        if(array.size()==0){
+            return stringWriter.toString();
+        }
         List<SubscriptionLink> subscriptionLinkList = subscriptionLinkService.listByIds(array);
 
         subscriptionLinkList.forEach(

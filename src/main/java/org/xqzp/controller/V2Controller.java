@@ -2,6 +2,7 @@ package org.xqzp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.xqzp.exception.ProxyException;
 import org.xqzp.service.V2Service;
 import org.xqzp.utils.JwtUtils;
 
@@ -16,6 +17,9 @@ public class V2Controller {
     public String getContribute(@RequestParam("token") String token){
         String uuid = JwtUtils.getUuidByJwtToken(token);
         String contribute = v2Service.createContribute(uuid);
+        if(contribute.isEmpty()){
+            throw new ProxyException(404,"没有可以使用的结点");
+        }
         return contribute;
     }
 }

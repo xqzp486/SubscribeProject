@@ -10,7 +10,5 @@ public interface UserLinkService extends IService<UserLink> {
 
     public String addOtherSubscription(User user);
 
-
-
 }
 

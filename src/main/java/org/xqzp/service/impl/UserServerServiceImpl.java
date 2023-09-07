@@ -44,9 +44,11 @@ public class UserServerServiceImpl extends ServiceImpl<UserServerMapper, UserSer
                         .map((UserServer::getSid))
                         .collect(Collectors.toList());
 
-        if(array.size()==0){
-            throw new ProxyException(404,"没有可以使用的结点");
+
+        if(array.size()==0) {
+            return null;
         }
+
 
         List<Server> serverList = serverService.listByIds(array);
 

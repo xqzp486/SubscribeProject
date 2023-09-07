@@ -34,16 +34,20 @@ public class V2Service {
         User user = userService.getOne(userwrapper);
 
         Map proxyInfoMap = userServerService.getProxyInfoMap(user,"v2ray");
-        List<Proxy> proxyList = (List<Proxy>) proxyInfoMap.get("proxyList");
 
         StringWriter sw=new StringWriter();
 
-        //获取生成订阅的工厂类，用对应的工厂类处理节点，生成单个节点的订阅
-        //将单个节点的订阅写入整体订阅中
-        for(Proxy proxy:proxyList){
-            V2ProxyFactory v2ProxyFactory = ApplicationContextUtil.getBean(proxy.getType());
-            String subscribe = v2ProxyFactory.getSubscribe(proxy);
-            sw.write(subscribe);
+        //如果有节点，则处理节点
+        if(proxyInfoMap!=null){
+            List<Proxy> proxyList = (List<Proxy>) proxyInfoMap.get("proxyList");
+
+            //获取生成订阅的工厂类，用对应的工厂类处理节点，生成单个节点的订阅
+            //将单个节点的订阅写入整体订阅中
+            for(Proxy proxy:proxyList){
+                V2ProxyFactory v2ProxyFactory = ApplicationContextUtil.getBean(proxy.getType());
+                String subscribe = v2ProxyFactory.getSubscribe(proxy);
+                sw.write(subscribe);
+            }
         }
 
         //加入第三方订阅

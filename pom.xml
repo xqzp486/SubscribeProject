@@ -6,7 +6,7 @@
 
     <groupId>xqzp</groupId>
     <artifactId>SubscribeProject</artifactId>
-    <version>1.3-2023831</version>
+    <version>1.3-20230907</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -112,8 +112,8 @@
                 <filtering>true</filtering>
                 <includes>
                     <!-- 项目打包完成的包中只包含当前环境文件 -->
-                    <include>application.properties</include>
-                    <include>application-${profileActive}.yaml</include>
+<!--                    <include>application.properties</include>-->
+<!--                    <include>application-${profileActive}.yaml</include>-->
                     <include>raw.yaml</include>
                     <include>logback.xml</include>
                 </includes>
