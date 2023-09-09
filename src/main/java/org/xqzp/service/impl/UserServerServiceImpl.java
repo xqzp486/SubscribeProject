@@ -26,11 +26,16 @@ import java.util.stream.Collectors;
 @Service
 public class UserServerServiceImpl extends ServiceImpl<UserServerMapper, UserServer> implements UserServerService {
 
-    @Autowired
+    final
     ServerService serverService;
 
-    @Autowired
+    final
     UserService userService;
+
+    public UserServerServiceImpl(ServerService serverService, UserService userService) {
+        this.serverService = serverService;
+        this.userService = userService;
+    }
 
     public Map getProxyInfoMap(User user,String type){
         //======================================================

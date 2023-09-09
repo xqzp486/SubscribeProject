@@ -1,6 +1,7 @@
 package org.xqzp.interceptor;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.xqzp.entity.User;
@@ -11,7 +12,7 @@ import org.xqzp.utils.JwtUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+@Slf4j
 public class TokenInterceptor implements HandlerInterceptor{
     @Autowired
     UserService userService;
@@ -25,6 +26,7 @@ public class TokenInterceptor implements HandlerInterceptor{
             wrapper.eq("uuid",uuid);
             long count = userService.count(wrapper);
             if(count>0){
+                log.info(uuid+" "+"获取订阅");
                 return true;
             }else {
                 throw new ProxyException(404,"用户不存在");

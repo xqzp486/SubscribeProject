@@ -19,11 +19,16 @@ import java.util.stream.Collectors;
 @Service("userLinkService")
 public class UserLinkServiceImpl extends ServiceImpl<UserLinkMapper, UserLink> implements UserLinkService {
 
-    @Autowired
-    private SubscriptionLinkService subscriptionLinkService;
+    private final
+    SubscriptionLinkService subscriptionLinkService;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final
+    RestTemplate restTemplate;
+
+    public UserLinkServiceImpl(SubscriptionLinkService subscriptionLinkService, RestTemplate restTemplate) {
+        this.subscriptionLinkService = subscriptionLinkService;
+        this.restTemplate = restTemplate;
+    }
 
 
     /**

@@ -18,11 +18,16 @@ import java.util.Map;
 
 @Service
 public class YamlService {
-    @Autowired
+    final
     UserServerService userServerService;
 
-    @Autowired
+    final
     UserService userService;
+
+    public YamlService(UserServerService userServerService, UserService userService) {
+        this.userServerService = userServerService;
+        this.userService = userService;
+    }
 
     public StringBuffer createYaml(String uuid)  {
         //查询用户信息

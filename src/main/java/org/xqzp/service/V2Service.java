@@ -2,7 +2,6 @@ package org.xqzp.service;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xqzp.entity.User;
 import org.xqzp.entity.v2.V2ProxyFactory;
@@ -18,20 +17,26 @@ import java.util.Map;
 @Service
 public class V2Service {
 
-    @Autowired
+    private final
     UserServerService userServerService;
 
-    @Autowired
+    private final
     UserLinkService userLinkService;
 
-    @Autowired
+    private final
     UserService userService;
+
+    public V2Service(UserServerService userServerService, UserLinkService userLinkService, UserService userService) {
+        this.userServerService = userServerService;
+        this.userLinkService = userLinkService;
+        this.userService = userService;
+    }
 
     public String createContribute(String uuid) {
         //查询用户信息
-        QueryWrapper<User> userwrapper = new QueryWrapper<>();
-        userwrapper.eq("uuid",uuid);
-        User user = userService.getOne(userwrapper);
+        QueryWrapper<User> userWrapper = new QueryWrapper<>();
+        userWrapper.eq("uuid",uuid);
+        User user = userService.getOne(userWrapper);
 
         Map proxyInfoMap = userServerService.getProxyInfoMap(user,"v2ray");
 
