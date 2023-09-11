@@ -26,7 +26,7 @@ public class TokenInterceptor implements HandlerInterceptor{
             wrapper.eq("uuid",uuid);
             long count = userService.count(wrapper);
             if(count>0){
-                log.info(uuid+" "+"获取订阅");
+                log.info(request.getRemoteAddr()+" "+uuid+" "+"获取订阅");
                 return true;
             }else {
                 throw new ProxyException(404,"用户不存在");
