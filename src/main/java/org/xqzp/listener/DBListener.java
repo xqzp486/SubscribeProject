@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * 项目启动时执行
- * 如果用户没有token密钥，则自定生成一个token密钥
+ * 如果用户没有token密钥，则自动生成一个token密钥
  * 并将该token密钥加入到数据库
  */
 @Component
